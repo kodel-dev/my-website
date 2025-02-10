@@ -1,0 +1,373 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Courier New", Courier;
+    font-size: 16px;
+    color: #333;
+    background: linear-gradient(270deg, #ff7e5f, #feb47b);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+}
+
+/* Styling navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 30px;
+    position: fixed;
+    top: -100px;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s, top 3s ease-in-out;
+}
+
+.navbar.show {
+    top: 0;
+}
+
+.navbar:hover {
+    background-color: rgba(51, 51, 51, 0.8);
+}
+
+.logo {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none; /* Menghilangkan bullet point */
+    display: flex;
+    width: 100%;
+    text-align: center;
+    padding-left: 50px;
+    padding right: 50px;
+    gap: 50px; /* Jarak antar item */
+}
+
+.nav-links li {
+    position: relative; /* Untuk dropdown */
+    width: 100%;
+}
+
+.dropdown {
+    max-height: 0; /* Awalnya tersembunyi */
+    overflow: hidden; /* Sembunyikan konten yang melampaui batas */
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0 10px; /* Padding horizontal */
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0; /* Awalnya tidak terlihat */
+    transition: max-height 0.3s ease, opacity 0.3s ease; /* Transisi untuk animasi */
+}
+
+.dropdown.show {
+    max-height: 200px; /* Atur maksimal tinggi ketika dropdown ditampilkan */
+    opacity: 1; /* Ubah menjadi terlihat */
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffcc00; /* Mengubah warna teks saat hover */
+}
+
+.search-container {
+    display: flex;
+    align-items: relative;
+    padding-left: 50px;
+}
+
+.search-container input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.search-container button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #333;
+}
+
+.search-container button:hover {
+    background-color: #ffb700;
+}
+
+.menu-toggle {
+    display: none;
+    position: left;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+    
+    .nav-links.show {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .search-container {
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: #ffcc00;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+.navbar-container {
+    width: 100%;
+    max-width: 1200%;
+    margin: 0 auto;
+}
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    width: 90%;
+    margin: 150px auto;
+    padding: 20px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: (0); }
+}
+
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    animation: textColorChange 6s infinite alternate;
+}
+
+@keyframes textColorChange {
+    0% { color: red; }
+    50% { color: blue; }
+    100% { color: magenta; }
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #0066cc;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+.project {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: background-color 0.3s ease;
+}
+
+.project:hover {
+    background-color: #eef;
+}
+
+.project p {
+font-family: "fira code", fira;
+}
+
+.project h2 {
+    margin-top: 0;
+    color: #444;
+    text-align: center;
+}
+
+.project h3 {
+    margin-top: 10px;
+}
+
+.project-pic {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Menambahkan gaya untuk paragraf */
+.project p {
+    line-height: 1.6; /* Jarak antar baris */
+    margin: 10px 0; /* Margin atas dan bawah */
+    text-align: justify; /* Rata kiri dan kanan */
+}
+
+.footer {
+    color: #555;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    background-color: #333;
+    color: #fff;
+    position: relative;
+}
+
+/* Ketikan Efek untuk Judul */
+.typing-effect {
+    display: inline-block;
+    overflow: hidden; /* Ensures the text is hidden */
+    white-space: nowrap; /* Keeps the text in a single line */
+    border-right: 4px solid; /* Creates a cursor effect */
+    width: 0; /* Initially hide the text */
+    animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: orange; }
+}
+
+/* Efek Zoom pada Judul */
+.hover-zoom {
+    transition: transform 0.3s ease;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.1);
+    color: #ff7e5f; /* Mengubah warna ketika di-hover */
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    transition: transform 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2); /* Efek zoom pada ikon sosial */
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #0066cc; /* Warna latar belakang tombol */
+    color: #fff; /* Warna teks tombol */
+    text-decoration: none; /* Menghilangkan garis bawah */
+    border-radius: 5px; /* Membuat sudut tombol melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan pada tombol */
+    transition: background-color 0.3s, transform 0.3s; /* Efek transisi saat hover */
+    font-weight: bold; /* Membuat teks menjadi tebal */
+}
+
+.read-more:hover {
+    background-color: #005bb5; /* Mengubah warna latar belakang saat hover */
+    transform: translateY(-3px); /* Efek angkat saat hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Mengubah bayangan saat hover */
+}
+
+.read-more i {
+    margin-right: 5px; /* Jarak antara ikon dan teks */
+}
+
+.project p {
+    line-height: 1.5; /* Jarak antar baris yang lebih besar */
+    margin: 15px 0; /* Margin atas dan bawah yang lebih besar */
+    text-align: center; /* Rata kiri dan kanan */
+    padding:10px; /* Menambahkan padding di dalam paragraf */
+    background-color: rgba(240, 240, 240, 0.8); /* Warna latar belakang yang lembut */
+    border-left: 4px solid #0066cc; /* Garis di sebelah kiri untuk penekanan */
+    border-radius: 5px; /* Membuat sudut melengkung */
+}
+
+/* Menambahkan efek hover pada paragraf */
+.project p:hover {
+    background-color: rgba(230, 230, 230, 0.9); /* Mengubah warna latar belakang saat di-hover */
+    transition: background-color 0.3s; /* Efek transisi saat hover */
+}
+
+.gif-image {
+    width: 100%; /* Mengatur lebar gambar agar responsif */
+    max-width: 400px; /* Maksimal lebar gambar */
+    border-radius: 10px; /* Sudut melengkung */
+    transition: transform 0.3s ease; /* Efek zoom */
+}
+
+.gif-image:hover {
+    transform: scale(1.05); /* Zoom saat hover */
+}
