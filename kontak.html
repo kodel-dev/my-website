@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="kontak/style.css"> <!-- Ganti dengan path ke file CSS Anda -->
+ <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
+<link href="https://github.com/tonsky/FiraCode/releases/download/6.2/FiraCode-Regular.ttf" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Kontak</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo"> Beranda</div> <!-- Ganti logo.png dengan path ke logo Anda -->
+            <ul class="nav-links">
+                <li><a href="halamanutama.html">Dashboard</a></li>
+                <li><a href="#certificate">Penghargaan</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="submit" onclick="searchContent()"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+    
+    <section id="home" class="hero">
+      <div class="paragraph-box1">
+        <h1>Selamat datang di website saya!</h1>
+        <p>Jelajahi karya-karya dan proyek saya di sini.</p>
+<img src="images/image.gif" alt="Deskripsi Gambar GIF" class="gif-image"> <!-- path/to/your/image.gif dengan URL atau path ke gambar GIF Anda -->    
+</section>
+    
+ <div class="page">
+        <div class="page-header" onclick="toggleFold()">
+            <h2>My Contact</h2>
+        </div>
+        <div class="page-content" id="page-content">
+    
+    
+    
+    <section id="contact">
+        <p1>Terima kasih telah mengunjungi website saya! Jika Anda ingin bertanya, berbicara tentang proyek, atau hanya ingin mengobrol, jangan ragu untuk menghubungi saya. Saya senang bertemu dengan orang baru dan selalu terbuka untuk berbagi ide.</p1>
+        
+        <div class="contact-container">
+            <form id="contactform" onsubmit="sendWhatsApp(event)">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" placeholder="Masukan Nama Anda" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Masukan Email Anda" required>
+                
+                <label for="message">Pesan:</label>
+                <textarea id="message" name="message" placeholder="Tuliskan Pesan Anda" required></textarea>
+                
+                <button type="submit" class="submit-btn">Kirim</button>
+            </form>
+    </section>
+    </div>
+    </div>
+    </div>
+    
+    <footer>
+        <p2 href="https://www.google.com" target="_blank">Copyright &copy; 2025 portofolio.com All rights reserved</p2>
+    </footer>
+   
+    <script src="java-script/script.js"></script>
+    
+    <script>
+    function sendWhatsApp(event) {
+        event.preventDefault(); // Mencegah pengiriman form biasa
+        
+        // Ambil nilai inputan
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        // Format pesan
+        const formattedMessage = `Nama: ${name}\nEmail: ${email}\nPesan: ${message}`;
+        const phoneNumber = "6283837210003"; // Ganti dengan nomor WhatsApp Anda dalam format internasional
+        const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(formattedMessage)}`;
+
+        console.log(whatsappLink); // Cek tautan yang dihasilkan di konsol
+
+        // Buka tautan WhatsApp
+        window.open(whatsappLink, '_blank');
+    }
+    </script>
+</body>
+</html>
